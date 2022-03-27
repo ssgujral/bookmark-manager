@@ -1,0 +1,23 @@
+Current title: <%= @bookmark.title %> <br>
+Current url: <%= @bookmark.url %>
+
+<form action="/bookmarks/<%= @bookmark.id %>" method="post">
+  <input type="hidden" name='_method' value='PATCH'>
+ <!-- We need a change title field --> 
+ <input name="title" type="text" placeholder="new title" >
+
+ <!-- We need a change title button --> 
+ <input type="submit" value="Change Title">
+</form>
+
+<form>
+ <!-- We need a change url button --> 
+
+
+ <!-- We need a change url field --> 
+
+</form>
+
+<form action='/bookmarks' method='get'>
+  <input type='submit' value='Back to bookmarks'>
+</form>

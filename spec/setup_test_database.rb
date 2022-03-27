@@ -2,7 +2,7 @@ require 'pg'
 
 
 
-def setup_test_database()
+def setup_test_database
 
   p "Setting up database..."
 
