@@ -6,6 +6,8 @@ gem 'pg'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
+
 
 group :test do
   gem 'capybara'

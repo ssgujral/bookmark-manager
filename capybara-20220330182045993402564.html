@@ -2,26 +2,25 @@
   <input name='page_address' type='text' placeholder='Your url'>
   <input name='title' type='text' placeholder='Your title'>
   <input type='submit' value='Add bookmark'>
-  <%= flash[:notice] %>
 </form>
 
 <ol>
-  <% @bookmarks.each do |bookmark| %>
-    <li class="bookmark" id="bookmark-<%= bookmark.id %>">
+  
+    <li class="bookmark" id="bookmark-815">
       <!-- Book title and url -->
-      <h4><%= bookmark.title %></h4>
-      <a href=<%= bookmark.url %> target="_blank" ><%= bookmark.url %></a> 
-
+      <h4></h4>
+      <a href=not a real bookmark target="_blank" >not a real bookmark</a> 
+      
       <!-- Delete button for each bookmark -->
-      <form action="/bookmarks/<%= bookmark.id %>" method="post">
+      <form action="/bookmarks/815" method="post">
         <input type="hidden" name='_method' value='DELETE'>
         <input type='submit' value='Delete'>
       </form>
       
       <!-- Edit button for each bookmark -->
-      <form action="bookmarks/<%= bookmark.id %>/edit" method="get">
+      <form action="bookmarks/815/edit" method="get">
         <input type='submit' value='Edit'>
       </form>
     </li>  
-  <% end %>
+  
 </ol>

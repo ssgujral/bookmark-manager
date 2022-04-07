@@ -1,7 +1,12 @@
-require './lib/database'
+require './lib/database_connection'
 
 class Bookmark
   include Database
+
+  def self.all
+    result = DatabaseConnection.query("SELECT * FROM bookmarks")
+    result.map { |bookmark| bookmark['url'] }
+  end
 
   def self.find_by_id(id)
     bookmark_info = Database.find_by_id(id)
@@ -15,7 +20,7 @@ class Bookmark
   
   def self.add(url, title)
     persisted_data = Database.add(url, title)
-    
+
     Bookmark.new(persisted_data[0]['id'], persisted_data[0]['url'], persisted_data[0]['title'])
   end
 

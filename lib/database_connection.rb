@@ -1,5 +1,7 @@
 require 'pg'
 
+
+
 module Database
 
   def self.find_by_id(id)
@@ -22,11 +24,30 @@ module Database
     Database.connect.exec_params("UPDATE bookmarks SET title = $1 WHERE id = $2 RETURNING id, url, title;", [title, id])
   end
   
-  def self.connect
+   def self.connect
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: "bookmark_manager_test")
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end  
+
+
   end
+end
+
+
+
+class DatabaseConnection
+  def self.setup(dbname)
+    @connection = PG.connect(dbname: dbname)
+  end
+
+  def self.connection
+    @connection
+  end
+
+  def self.query(sql, params = [])
+    @connection.exec_params(sql, params)
+  end
+
 end
